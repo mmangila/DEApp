@@ -778,7 +778,13 @@ body <- dashboardBody(
                          tags$style("#edgerTestDGE table {border: 1px solid black; align: center; margin:auto;}","#edgerTestDGE th {border: 1px solid black;}","#edgerTestDGE td {border: 1px solid black;}"),
                          br(),
                          downloadButton("edgerDownload", 
-                                        label = "Download",
+                                        label = "Download all DE genes",
+                                        class = NULL),
+                         downloadButton("edgerupDownload", 
+                                        label = "Download upregulated genes",
+                                        class = NULL),
+                         downloadButton("edgerdownDownload", 
+                                        label = "Download downregulated genes",
                                         class = NULL),
                          tags$style("#edgerDownload {float:right; }")
                          #helpText("Download DEGs results", align="right")
@@ -907,7 +913,13 @@ body <- dashboardBody(
                          tags$style("#voomTestDGE table {border: 1px solid black; align: center; margin:auto;}","#voomTestDGE th {border: 1px solid black;}","#voomTestDGE td {border: 1px solid black;}"),
                          br(),
                          downloadButton("voomDownload", 
-                                        label = "Download",
+                                        label = "Download all DE genes",
+                                        class = NULL),
+                         downloadButton("voomupDownload", 
+                                        label = "Download upregulated genes",
+                                        class = NULL),
+                         downloadButton("voomdownDownload", 
+                                        label = "Download downregulated genes",
                                         class = NULL),
                          tags$style("#voomDownload {float:right; }")
                          #helpText("Download DEGs results")
@@ -1033,7 +1045,13 @@ body <- dashboardBody(
                          tags$style("#deseq2TestDGE table {border: 1px solid black; align: center; margin:auto;}","#deseq2TestDGE th {border: 1px solid black;}","#deseq2TestDGE td {border: 1px solid black;}"),
                          br(),
                          downloadButton("deseq2Download", 
-                                        label = "Download",
+                                        label = "Download all DE genes",
+                                        class = NULL),
+                         downloadButton("deseq2upDownload", 
+                                        label = "Download upregulated genes",
+                                        class = NULL),
+                         downloadButton("deseq2downDownload", 
+                                        label = "Download downregulated genes",
                                         class = NULL),
                          tags$style("#deseq2Download {float:right; }")
                          
@@ -1153,7 +1171,13 @@ body <- dashboardBody(
                          p("Gene lists results can be downloaded here:"
                            , style="font-weight: bold"),
                          downloadButton("overlap_genes_download", 
-                                        label = "Download",
+                                        label = "Download all DE genes",
+                                        class = NULL),
+                         downloadButton("overlap_genes_up_download", 
+                                        label = "Download upregulated genes",
+                                        class = NULL),
+                         downloadButton("overlap_genes_down_download", 
+                                        label = "Download downregulated genes",
                                         class = NULL),
                          tags$style("#overlap_genes_download {float:right; }")
                      )
