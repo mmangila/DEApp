@@ -19,7 +19,7 @@
 # print(lapply(c(packages, BCpackages), require, character.only=T))
 ## End checking whether all required packages are successfully loaded
 ## Load required packages
-libary(shiny)
+library(shiny)
 library(shinydashboard)
 library(DT)
 library(ggplot2)
