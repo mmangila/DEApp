@@ -19,14 +19,14 @@
 # print(lapply(c(packages, BCpackages), require, character.only=T))
 ## End checking whether all required packages are successfully loaded
 ## Load required packages
-require(shiny)
-require(shinydashboard)
-require(DT)
-require(ggplot2)
-require(gplots)
-require(edgeR)
-require(DESeq2)
-require(limma)
+libary(shiny)
+library(shinydashboard)
+library(DT)
+library(ggplot2)
+library(gplots)
+library(edgeR)
+library(DESeq2)
+library(limma)
 
 ## trim function used for comparision group names' processing
 trim <- function (x) gsub("^\\s+|\\s+$", "", x)
