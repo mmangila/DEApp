@@ -1217,26 +1217,26 @@ shinyServer(function(input, output, session) {
   })
 
   output$edgerDownload <- downloadHandler(
-    filename = function() {paste("edger-DEG-res-", Sys.Date(), ".txt", sep="")},
+    filename = function() {paste("edger-DEG-res-", Sys.Date(), ".csv", sep="")},
     content = function(file) {write.table(rbind(subset(edgerDEfilter()$table, filter==1),
                                                 subset(edgerDEfilter()$table, filter==-1)),
-                                          file, row.names=T, col.names=NA, quote=F, sep="\t"
+                                          file, row.names=T, col.names=NA, quote=F, sep=","
     )},
     contentType = "text"
   )
 
   output$edgerupDownload <- downloadHandler(
-    filename = function() {paste("edger-DEG-up-res-", Sys.Date(), ".txt", sep="")},
+    filename = function() {paste("edger-DEG-up-res-", Sys.Date(), ".csv", sep="")},
     content = function(file) {write.table(subset(edgerDEfilter()$table, filter==1),
-                                          file, row.names=T, col.names=NA, quote=F, sep="\t"
+                                          file, row.names=T, col.names=NA, quote=F, sep=","
     )},
     contentType = "text"
   )
 
   output$edgerdownDownload <- downloadHandler(
-    filename = function() {paste("edger-DEG-down-res-", Sys.Date(), ".txt", sep="")},
+    filename = function() {paste("edger-DEG-down-res-", Sys.Date(), ".csv", sep="")},
     content = function(file) {write.table(subset(edgerDEfilter()$table, filter==-1),
-                                          file, row.names=T, col.names=NA, quote=F, sep="\t"
+                                          file, row.names=T, col.names=NA, quote=F, sep=","
     )},
     contentType = "text"
   )
@@ -1353,25 +1353,25 @@ shinyServer(function(input, output, session) {
   })
 
   output$voomDownload <- downloadHandler(
-    filename = function() {paste("voom-DEG-res-", Sys.Date(), ".txt", sep="")},
+    filename = function() {paste("voom-DEG-res-", Sys.Date(), ".csv", sep="")},
     content = function(file) {write.table(rbind(subset(voomDEfilter(), filter==1),
                                                 subset(voomDEfilter(), filter==-1)),
-                                          file, row.names=T, col.names=NA, quote=F, sep="\t"
+                                          file, row.names=T, col.names=NA, quote=F, sep=","
     )},
     contentType = "text"
   )
 
   output$voomupDownload <- downloadHandler(
-    filename = function() {paste("voom-DEG-up-res-", Sys.Date(), ".txt", sep="")},
+    filename = function() {paste("voom-DEG-up-res-", Sys.Date(), ".csv", sep="")},
     content = function(file) {write.table(subset(voomDEfilter(), filter==1),
-                                          file, row.names=T, col.names=NA, quote=F, sep="\t"
+                                          file, row.names=T, col.names=NA, quote=F, sep=","
     )},
     contentType = "text"
   )
   output$voomdownDownload <- downloadHandler(
-    filename = function() {paste("voom-DEG-down-res-", Sys.Date(), ".txt", sep="")},
+    filename = function() {paste("voom-DEG-down-res-", Sys.Date(), ".csv", sep="")},
     content = function(file) {write.table(subset(voomDEfilter(), filter==-1),
-                                          file, row.names=T, col.names=NA, quote=F, sep="\t"
+                                          file, row.names=T, col.names=NA, quote=F, sep=","
     )},
     contentType = "text"
   )
@@ -1486,26 +1486,26 @@ shinyServer(function(input, output, session) {
   })
 
   output$deseq2Download <- downloadHandler(
-    filename = function() {paste("DESeq2-DEG-res-", Sys.Date(), ".txt", sep="")},
+    filename = function() {paste("DESeq2-DEG-res-", Sys.Date(), ".csv", sep="")},
     content = function(file) {write.table(rbind(subset(deseq2DEfilter(), filter==1),
                                                 subset(deseq2DEfilter(), filter==-1)),
-                                          file, row.names=T, col.names=NA, quote=F, sep="\t"
+                                          file, row.names=T, col.names=NA, quote=F, sep=","
     )},
     contentType = "text"
   )
 
   output$deseq2upDownload <- downloadHandler(
-    filename = function() {paste("DESeq2-DEG-up-res-", Sys.Date(), ".txt", sep="")},
+    filename = function() {paste("DESeq2-DEG-up-res-", Sys.Date(), ".csv", sep="")},
     content = function(file) {write.table(subset(deseq2DEfilter(), filter==1),
-                                          file, row.names=T, col.names=NA, quote=F, sep="\t"
+                                          file, row.names=T, col.names=NA, quote=F, sep=","
     )},
     contentType = "text"
   )
 
   output$deseq2downDownload <- downloadHandler(
-    filename = function() {paste("DESeq2-DEG-down-res-", Sys.Date(), ".txt", sep="")},
+    filename = function() {paste("DESeq2-DEG-down-res-", Sys.Date(), ".csv", sep="")},
     content = function(file) {write.table(subset(deseq2DEfilter(), filter==-1),
-                                          file, row.names=T, col.names=NA, quote=F, sep="\t"
+                                          file, row.names=T, col.names=NA, quote=F, sep=","
     )},
     contentType = "text"
   )
@@ -1662,7 +1662,7 @@ shinyServer(function(input, output, session) {
         edgerRes <- subset(edgerDecomp()$table, filter==1 | filter==-1)
         voomRes <- subset(voomDecomp(), filter==1 | filter==-1)
         deseq2Res <- subset(deseq2Decomp(), filter==1 | filter==-1)
-        fs <- c("all3_overlap.txt","edger_voom_overlap_only.txt", "edger_deseq2_overlap_only.txt", "voom_deseq2_overlap_only.txt", "deseq2_only.txt", "edgeR_only.txt", "voom_only.txt")
+        fs <- c("all3_overlap.csv","edger_voom_overlap_only.csv", "edger_deseq2_overlap_only.csv", "voom_deseq2_overlap_only.csv", "deseq2_only.csv", "edgeR_only.csv", "voom_only.csv")
         vennres <- venn(list(voom = rownames(voomRes), edgeR = rownames(edgerRes), DESeq2=rownames(deseq2Res)))
         ol1 <- cbind(edgerRes[match(attr(vennres, "intersections")$`voom:edgeR:DESeq2`, rownames(edgerRes)),],
                      voomRes[match(attr(vennres, "intersections")$`voom:edgeR:DESeq2`, rownames(voomRes)),],
@@ -1693,17 +1693,17 @@ shinyServer(function(input, output, session) {
         ol6.save <- ol6[order(ol6$`PValue`), c(1,4,5)]
         ol7.save <- ol7[order(ol7$`P.Value`), c(1,4,5)]
 
-        write.table(ol1.save, file = "all3_overlap.txt", sep ="\t", quote = F, row.names = T, col.names = NA)
-        write.table(ol2.save, file = "edger_voom_overlap_only.txt", sep ="\t", quote = F, row.names = T, col.names = NA)
-        write.table(ol3.save, file = "edger_deseq2_overlap_only.txt", sep ="\t", quote = F, row.names = T, col.names = NA)
-        write.table(ol4.save, file = "voom_deseq2_overlap_only.txt", sep ="\t", quote = F, row.names = T, col.names = NA)
-        write.table(ol5.save, file = "deseq2_only.txt", sep ="\t", quote = F, row.names = T, col.names = NA)
-        write.table(ol6.save, file = "edgeR_only.txt", sep ="\t", quote = F, row.names = T, col.names = NA)
-        write.table(ol7.save, file = "voom_only.txt", sep ="\t", quote = F, row.names = T, col.names = NA)
+        write.table(ol1.save, file = "all3_overlap.csv", sep =",", quote = F, row.names = T, col.names = NA)
+        write.table(ol2.save, file = "edger_voom_overlap_only.csv", sep =",", quote = F, row.names = T, col.names = NA)
+        write.table(ol3.save, file = "edger_deseq2_overlap_only.csv", sep =",", quote = F, row.names = T, col.names = NA)
+        write.table(ol4.save, file = "voom_deseq2_overlap_only.csv", sep =",", quote = F, row.names = T, col.names = NA)
+        write.table(ol5.save, file = "deseq2_only.csv", sep =",", quote = F, row.names = T, col.names = NA)
+        write.table(ol6.save, file = "edgeR_only.csv", sep =",", quote = F, row.names = T, col.names = NA)
+        write.table(ol7.save, file = "voom_only.csv", sep =",", quote = F, row.names = T, col.names = NA)
       } else if (as.character("edger")%in%input$decompMethods & as.character("voom")%in%input$decompMethods){
         voomRes <- subset(voomDecomp(), filter==1 | filter==-1)
         edgerRes <- subset(edgerDecomp()$table, filter==1 | filter==-1)
-        fs <- c("edger_voom_overlap.txt", "edger_only.txt", "voom_only.txt")
+        fs <- c("edger_voom_overlap.csv", "edger_only.csv", "voom_only.csv")
         vennres <- venn(list(voom = rownames(voomRes), edgeR = rownames(edgerRes)))
         ol1 <- cbind(edgerRes[match(attr(vennres, "intersections")$`voom:edgeR`, rownames(edgerRes)),],
                      voomRes[match(attr(vennres, "intersections")$`voom:edgeR`, rownames(voomRes)),])
@@ -1720,13 +1720,13 @@ shinyServer(function(input, output, session) {
         ol2.save <- ol2[order(ol2$`PValue`), c(1,4,5)]
         ol3.save <- ol3[order(ol3$`P.Value`), c(1,4,5)]
 
-        write.table(ol1.save, file = "edger_voom_overlap.txt", sep ="\t", quote = F, row.names = T, col.names = NA)
-        write.table(ol2.save, file = "edger_only.txt", sep ="\t", quote = F, row.names = T, col.names = NA)
-        write.table(ol3.save, file = "voom_only.txt", sep ="\t", quote = F, row.names = T, col.names = NA)
+        write.table(ol1.save, file = "edger_voom_overlap.csv", sep =",", quote = F, row.names = T, col.names = NA)
+        write.table(ol2.save, file = "edger_only.csv", sep =",", quote = F, row.names = T, col.names = NA)
+        write.table(ol3.save, file = "voom_only.csv", sep =",", quote = F, row.names = T, col.names = NA)
       } else if (as.character("edger")%in%input$decompMethods & as.character("deseq2")%in%input$decompMethods) {
         edgerRes <- subset(edgerDecomp()$table, filter==1 | filter==-1)
         deseq2Res <- subset(deseq2Decomp(), filter==1 | filter==-1)
-        fs <- c("edger_deseq2_overlap.txt", "edger_only.txt", "deseq2_only.txt")
+        fs <- c("edger_deseq2_overlap.csv", "edger_only.csv", "deseq2_only.csv")
         vennres <- venn(list(DESeq2=rownames(deseq2Res), edgeR = rownames(edgerRes)))
         ol1 <- cbind(edgerRes[match(attr(vennres, "intersections")$`DESeq2:edgeR`, rownames(edgerRes)),],
                      deseq2Res[match(attr(vennres, "intersections")$`DESeq2:edgeR`, rownames(deseq2Res)),])
@@ -1741,13 +1741,13 @@ shinyServer(function(input, output, session) {
         ol2.save <- ol2[order(ol2$`PValue`), c(1,4,5)]
         ol3.save <- ol3[order(ol3$pvalue),c(2,5,6)]
 
-        write.table(ol1.save, file = "edger_deseq2_overlap.txt", sep ="\t", quote = F, row.names = T, col.names = NA)
-        write.table(ol2.save, file = "edger_only.txt", sep ="\t", quote = F, row.names = T, col.names = NA)
-        write.table(ol3.save, file = "deseq2_only.txt", sep ="\t", quote = F, row.names = T, col.names = NA)
+        write.table(ol1.save, file = "edger_deseq2_overlap.csv", sep =",", quote = F, row.names = T, col.names = NA)
+        write.table(ol2.save, file = "edger_only.csv", sep =",", quote = F, row.names = T, col.names = NA)
+        write.table(ol3.save, file = "deseq2_only.csv", sep =",", quote = F, row.names = T, col.names = NA)
       } else if (as.character("voom")%in%input$decompMethods & as.character("deseq2")%in%input$decompMethods) {
         voomRes <- subset(voomDecomp(), filter==1 | filter==-1)
         deseq2Res <- subset(deseq2Decomp(), filter==1 | filter==-1)
-        fs <- c("voom_deseq2_overlap.txt", "voom_only.txt", "deseq2_only.txt")
+        fs <- c("voom_deseq2_overlap.csv", "voom_only.csv", "deseq2_only.csv")
         vennres <- venn(list(voom = rownames(voomRes), DESeq2=rownames(deseq2Res)))
 
         ol1 <- cbind(voomRes[match(attr(vennres, "intersections")$`voom:DESeq2`, rownames(voomRes)),],
@@ -1765,9 +1765,9 @@ shinyServer(function(input, output, session) {
         ol3.save <- ol3[order(ol3$`pvalue`),c(2,5,6)]
         # print(ol1.save)
 
-        write.table(ol1.save, file = "voom_deseq2_overlap.txt", sep ="\t", quote = F, row.names = T, col.names = NA)
-        write.table(ol2.save, file = "voom_only.txt", sep ="\t", quote = F, row.names = T, col.names = NA)
-        write.table(ol3.save, file = "deseq2_only.txt", sep ="\t", quote = F, row.names = T, col.names = NA)
+        write.table(ol1.save, file = "voom_deseq2_overlap.csv", sep =",", quote = F, row.names = T, col.names = NA)
+        write.table(ol2.save, file = "voom_only.csv", sep =",", quote = F, row.names = T, col.names = NA)
+        write.table(ol3.save, file = "deseq2_only.csv", sep =",", quote = F, row.names = T, col.names = NA)
       }
       zip(zipfile=fname, files=fs)
 #       print(getwd())
@@ -1786,7 +1786,7 @@ shinyServer(function(input, output, session) {
         edgerRes <- subset(edgerDecomp()$table, filter==1)
         voomRes <- subset(voomDecomp(), filter==1)
         deseq2Res <- subset(deseq2Decomp(), filter==1)
-        fs <- c("all3_overlap.txt","edger_voom_overlap_only.txt", "edger_deseq2_overlap_only.txt", "voom_deseq2_overlap_only.txt", "deseq2_only.txt", "edgeR_only.txt", "voom_only.txt")
+        fs <- c("all3_overlap.csv","edger_voom_overlap_only.csv", "edger_deseq2_overlap_only.csv", "voom_deseq2_overlap_only.csv", "deseq2_only.csv", "edgeR_only.csv", "voom_only.csv")
         vennres <- venn(list(voom = rownames(voomRes), edgeR = rownames(edgerRes), DESeq2=rownames(deseq2Res)))
         ol1 <- cbind(edgerRes[match(attr(vennres, "intersections")$`voom:edgeR:DESeq2`, rownames(edgerRes)),],
                      voomRes[match(attr(vennres, "intersections")$`voom:edgeR:DESeq2`, rownames(voomRes)),],
@@ -1817,17 +1817,17 @@ shinyServer(function(input, output, session) {
         ol6.save <- ol6[order(ol6$`PValue`), c(1,4,5)]
         ol7.save <- ol7[order(ol7$`P.Value`), c(1,4,5)]
 
-        write.table(ol1.save, file = "all3_overlap.txt", sep ="\t", quote = F, row.names = T, col.names = NA)
-        write.table(ol2.save, file = "edger_voom_overlap_only.txt", sep ="\t", quote = F, row.names = T, col.names = NA)
-        write.table(ol3.save, file = "edger_deseq2_overlap_only.txt", sep ="\t", quote = F, row.names = T, col.names = NA)
-        write.table(ol4.save, file = "voom_deseq2_overlap_only.txt", sep ="\t", quote = F, row.names = T, col.names = NA)
-        write.table(ol5.save, file = "deseq2_only.txt", sep ="\t", quote = F, row.names = T, col.names = NA)
-        write.table(ol6.save, file = "edgeR_only.txt", sep ="\t", quote = F, row.names = T, col.names = NA)
-        write.table(ol7.save, file = "voom_only.txt", sep ="\t", quote = F, row.names = T, col.names = NA)
+        write.table(ol1.save, file = "all3_overlap.csv", sep =",", quote = F, row.names = T, col.names = NA)
+        write.table(ol2.save, file = "edger_voom_overlap_only.csv", sep =",", quote = F, row.names = T, col.names = NA)
+        write.table(ol3.save, file = "edger_deseq2_overlap_only.csv", sep =",", quote = F, row.names = T, col.names = NA)
+        write.table(ol4.save, file = "voom_deseq2_overlap_only.csv", sep =",", quote = F, row.names = T, col.names = NA)
+        write.table(ol5.save, file = "deseq2_only.csv", sep =",", quote = F, row.names = T, col.names = NA)
+        write.table(ol6.save, file = "edgeR_only.csv", sep =",", quote = F, row.names = T, col.names = NA)
+        write.table(ol7.save, file = "voom_only.csv", sep =",", quote = F, row.names = T, col.names = NA)
       } else if (as.character("edger")%in%input$decompMethods & as.character("voom")%in%input$decompMethods){
         voomRes <- subset(voomDecomp(), filter==1)
         edgerRes <- subset(edgerDecomp()$table, filter==1)
-        fs <- c("edger_voom_overlap.txt", "edger_only.txt", "voom_only.txt")
+        fs <- c("edger_voom_overlap.csv", "edger_only.csv", "voom_only.csv")
         vennres <- venn(list(voom = rownames(voomRes), edgeR = rownames(edgerRes)))
         ol1 <- cbind(edgerRes[match(attr(vennres, "intersections")$`voom:edgeR`, rownames(edgerRes)),],
                      voomRes[match(attr(vennres, "intersections")$`voom:edgeR`, rownames(voomRes)),])
@@ -1844,13 +1844,13 @@ shinyServer(function(input, output, session) {
         ol2.save <- ol2[order(ol2$`PValue`), c(1,4,5)]
         ol3.save <- ol3[order(ol3$`P.Value`), c(1,4,5)]
 
-        write.table(ol1.save, file = "edger_voom_overlap.txt", sep ="\t", quote = F, row.names = T, col.names = NA)
-        write.table(ol2.save, file = "edger_only.txt", sep ="\t", quote = F, row.names = T, col.names = NA)
-        write.table(ol3.save, file = "voom_only.txt", sep ="\t", quote = F, row.names = T, col.names = NA)
+        write.table(ol1.save, file = "edger_voom_overlap.csv", sep =",", quote = F, row.names = T, col.names = NA)
+        write.table(ol2.save, file = "edger_only.csv", sep =",", quote = F, row.names = T, col.names = NA)
+        write.table(ol3.save, file = "voom_only.csv", sep =",", quote = F, row.names = T, col.names = NA)
       } else if (as.character("edger")%in%input$decompMethods & as.character("deseq2")%in%input$decompMethods) {
         edgerRes <- subset(edgerDecomp()$table, filter==1)
         deseq2Res <- subset(deseq2Decomp(), filter==1)
-        fs <- c("edger_deseq2_overlap.txt", "edger_only.txt", "deseq2_only.txt")
+        fs <- c("edger_deseq2_overlap.csv", "edger_only.csv", "deseq2_only.csv")
         vennres <- venn(list(DESeq2=rownames(deseq2Res), edgeR = rownames(edgerRes)))
         ol1 <- cbind(edgerRes[match(attr(vennres, "intersections")$`DESeq2:edgeR`, rownames(edgerRes)),],
                      deseq2Res[match(attr(vennres, "intersections")$`DESeq2:edgeR`, rownames(deseq2Res)),])
@@ -1865,13 +1865,13 @@ shinyServer(function(input, output, session) {
         ol2.save <- ol2[order(ol2$`PValue`), c(1,4,5)]
         ol3.save <- ol3[order(ol3$pvalue),c(2,5,6)]
 
-        write.table(ol1.save, file = "edger_deseq2_overlap.txt", sep ="\t", quote = F, row.names = T, col.names = NA)
-        write.table(ol2.save, file = "edger_only.txt", sep ="\t", quote = F, row.names = T, col.names = NA)
-        write.table(ol3.save, file = "deseq2_only.txt", sep ="\t", quote = F, row.names = T, col.names = NA)
+        write.table(ol1.save, file = "edger_deseq2_overlap.csv", sep =",", quote = F, row.names = T, col.names = NA)
+        write.table(ol2.save, file = "edger_only.csv", sep =",", quote = F, row.names = T, col.names = NA)
+        write.table(ol3.save, file = "deseq2_only.csv", sep =",", quote = F, row.names = T, col.names = NA)
       } else if (as.character("voom")%in%input$decompMethods & as.character("deseq2")%in%input$decompMethods) {
         voomRes <- subset(voomDecomp(), filter==1)
         deseq2Res <- subset(deseq2Decomp(), filter==1)
-        fs <- c("voom_deseq2_overlap.txt", "voom_only.txt", "deseq2_only.txt")
+        fs <- c("voom_deseq2_overlap.csv", "voom_only.csv", "deseq2_only.csv")
         vennres <- venn(list(voom = rownames(voomRes), DESeq2=rownames(deseq2Res)))
 
         ol1 <- cbind(voomRes[match(attr(vennres, "intersections")$`voom:DESeq2`, rownames(voomRes)),],
@@ -1889,9 +1889,9 @@ shinyServer(function(input, output, session) {
         ol3.save <- ol3[order(ol3$`pvalue`),c(2,5,6)]
         # print(ol1.save)
 
-        write.table(ol1.save, file = "voom_deseq2_overlap.txt", sep ="\t", quote = F, row.names = T, col.names = NA)
-        write.table(ol2.save, file = "voom_only.txt", sep ="\t", quote = F, row.names = T, col.names = NA)
-        write.table(ol3.save, file = "deseq2_only.txt", sep ="\t", quote = F, row.names = T, col.names = NA)
+        write.table(ol1.save, file = "voom_deseq2_overlap.csv", sep =",", quote = F, row.names = T, col.names = NA)
+        write.table(ol2.save, file = "voom_only.csv", sep =",", quote = F, row.names = T, col.names = NA)
+        write.table(ol3.save, file = "deseq2_only.csv", sep =",", quote = F, row.names = T, col.names = NA)
       }
       zip(zipfile=fname, files=fs)
       #       print(getwd())
@@ -1910,7 +1910,7 @@ shinyServer(function(input, output, session) {
         edgerRes <- subset(edgerDecomp()$table, filter==-1)
         voomRes <- subset(voomDecomp(), filter==-1)
         deseq2Res <- subset(deseq2Decomp(), filter==-1)
-        fs <- c("all3_overlap.txt","edger_voom_overlap_only.txt", "edger_deseq2_overlap_only.txt", "voom_deseq2_overlap_only.txt", "deseq2_only.txt", "edgeR_only.txt", "voom_only.txt")
+        fs <- c("all3_overlap.csv","edger_voom_overlap_only.csv", "edger_deseq2_overlap_only.csv", "voom_deseq2_overlap_only.csv", "deseq2_only.csv", "edgeR_only.csv", "voom_only.csv")
         vennres <- venn(list(voom = rownames(voomRes), edgeR = rownames(edgerRes), DESeq2=rownames(deseq2Res)))
         ol1 <- cbind(edgerRes[match(attr(vennres, "intersections")$`voom:edgeR:DESeq2`, rownames(edgerRes)),],
                      voomRes[match(attr(vennres, "intersections")$`voom:edgeR:DESeq2`, rownames(voomRes)),],
@@ -1941,17 +1941,17 @@ shinyServer(function(input, output, session) {
         ol6.save <- ol6[order(ol6$`PValue`), c(1,4,5)]
         ol7.save <- ol7[order(ol7$`P.Value`), c(1,4,5)]
 
-        write.table(ol1.save, file = "all3_overlap.txt", sep ="\t", quote = F, row.names = T, col.names = NA)
-        write.table(ol2.save, file = "edger_voom_overlap_only.txt", sep ="\t", quote = F, row.names = T, col.names = NA)
-        write.table(ol3.save, file = "edger_deseq2_overlap_only.txt", sep ="\t", quote = F, row.names = T, col.names = NA)
-        write.table(ol4.save, file = "voom_deseq2_overlap_only.txt", sep ="\t", quote = F, row.names = T, col.names = NA)
-        write.table(ol5.save, file = "deseq2_only.txt", sep ="\t", quote = F, row.names = T, col.names = NA)
-        write.table(ol6.save, file = "edgeR_only.txt", sep ="\t", quote = F, row.names = T, col.names = NA)
-        write.table(ol7.save, file = "voom_only.txt", sep ="\t", quote = F, row.names = T, col.names = NA)
+        write.table(ol1.save, file = "all3_overlap.csv", sep =",", quote = F, row.names = T, col.names = NA)
+        write.table(ol2.save, file = "edger_voom_overlap_only.csv", sep =",", quote = F, row.names = T, col.names = NA)
+        write.table(ol3.save, file = "edger_deseq2_overlap_only.csv", sep =",", quote = F, row.names = T, col.names = NA)
+        write.table(ol4.save, file = "voom_deseq2_overlap_only.csv", sep =",", quote = F, row.names = T, col.names = NA)
+        write.table(ol5.save, file = "deseq2_only.csv", sep =",", quote = F, row.names = T, col.names = NA)
+        write.table(ol6.save, file = "edgeR_only.csv", sep =",", quote = F, row.names = T, col.names = NA)
+        write.table(ol7.save, file = "voom_only.csv", sep =",", quote = F, row.names = T, col.names = NA)
       } else if (as.character("edger")%in%input$decompMethods & as.character("voom")%in%input$decompMethods){
         voomRes <- subset(voomDecomp(), filter==-1)
         edgerRes <- subset(edgerDecomp()$table, filter==-1)
-        fs <- c("edger_voom_overlap.txt", "edger_only.txt", "voom_only.txt")
+        fs <- c("edger_voom_overlap.csv", "edger_only.csv", "voom_only.csv")
         vennres <- venn(list(voom = rownames(voomRes), edgeR = rownames(edgerRes)))
         ol1 <- cbind(edgerRes[match(attr(vennres, "intersections")$`voom:edgeR`, rownames(edgerRes)),],
                      voomRes[match(attr(vennres, "intersections")$`voom:edgeR`, rownames(voomRes)),])
@@ -1968,13 +1968,13 @@ shinyServer(function(input, output, session) {
         ol2.save <- ol2[order(ol2$`PValue`), c(1,4,5)]
         ol3.save <- ol3[order(ol3$`P.Value`), c(1,4,5)]
 
-        write.table(ol1.save, file = "edger_voom_overlap.txt", sep ="\t", quote = F, row.names = T, col.names = NA)
-        write.table(ol2.save, file = "edger_only.txt", sep ="\t", quote = F, row.names = T, col.names = NA)
-        write.table(ol3.save, file = "voom_only.txt", sep ="\t", quote = F, row.names = T, col.names = NA)
+        write.table(ol1.save, file = "edger_voom_overlap.csv", sep =",", quote = F, row.names = T, col.names = NA)
+        write.table(ol2.save, file = "edger_only.csv", sep =",", quote = F, row.names = T, col.names = NA)
+        write.table(ol3.save, file = "voom_only.csv", sep =",", quote = F, row.names = T, col.names = NA)
       } else if (as.character("edger")%in%input$decompMethods & as.character("deseq2")%in%input$decompMethods) {
         edgerRes <- subset(edgerDecomp()$table, filter==-1)
         deseq2Res <- subset(deseq2Decomp(), filter==-1)
-        fs <- c("edger_deseq2_overlap.txt", "edger_only.txt", "deseq2_only.txt")
+        fs <- c("edger_deseq2_overlap.csv", "edger_only.csv", "deseq2_only.csv")
         vennres <- venn(list(DESeq2=rownames(deseq2Res), edgeR = rownames(edgerRes)))
         ol1 <- cbind(edgerRes[match(attr(vennres, "intersections")$`DESeq2:edgeR`, rownames(edgerRes)),],
                      deseq2Res[match(attr(vennres, "intersections")$`DESeq2:edgeR`, rownames(deseq2Res)),])
@@ -1989,13 +1989,13 @@ shinyServer(function(input, output, session) {
         ol2.save <- ol2[order(ol2$`PValue`), c(1,4,5)]
         ol3.save <- ol3[order(ol3$pvalue),c(2,5,6)]
 
-        write.table(ol1.save, file = "edger_deseq2_overlap.txt", sep ="\t", quote = F, row.names = T, col.names = NA)
-        write.table(ol2.save, file = "edger_only.txt", sep ="\t", quote = F, row.names = T, col.names = NA)
-        write.table(ol3.save, file = "deseq2_only.txt", sep ="\t", quote = F, row.names = T, col.names = NA)
+        write.table(ol1.save, file = "edger_deseq2_overlap.csv", sep =",", quote = F, row.names = T, col.names = NA)
+        write.table(ol2.save, file = "edger_only.csv", sep =",", quote = F, row.names = T, col.names = NA)
+        write.table(ol3.save, file = "deseq2_only.csv", sep =",", quote = F, row.names = T, col.names = NA)
       } else if (as.character("voom")%in%input$decompMethods & as.character("deseq2")%in%input$decompMethods) {
         voomRes <- subset(voomDecomp(), filter==-1)
         deseq2Res <- subset(deseq2Decomp(), filter==-1)
-        fs <- c("voom_deseq2_overlap.txt", "voom_only.txt", "deseq2_only.txt")
+        fs <- c("voom_deseq2_overlap.csv", "voom_only.csv", "deseq2_only.csv")
         vennres <- venn(list(voom = rownames(voomRes), DESeq2=rownames(deseq2Res)))
 
         ol1 <- cbind(voomRes[match(attr(vennres, "intersections")$`voom:DESeq2`, rownames(voomRes)),],
@@ -2013,9 +2013,9 @@ shinyServer(function(input, output, session) {
         ol3.save <- ol3[order(ol3$`pvalue`),c(2,5,6)]
         # print(ol1.save)
 
-        write.table(ol1.save, file = "voom_deseq2_overlap.txt", sep ="\t", quote = F, row.names = T, col.names = NA)
-        write.table(ol2.save, file = "voom_only.txt", sep ="\t", quote = F, row.names = T, col.names = NA)
-        write.table(ol3.save, file = "deseq2_only.txt", sep ="\t", quote = F, row.names = T, col.names = NA)
+        write.table(ol1.save, file = "voom_deseq2_overlap.csv", sep =",", quote = F, row.names = T, col.names = NA)
+        write.table(ol2.save, file = "voom_only.csv", sep =",", quote = F, row.names = T, col.names = NA)
+        write.table(ol3.save, file = "deseq2_only.csv", sep =",", quote = F, row.names = T, col.names = NA)
       }
       zip(zipfile=fname, files=fs)
       #       print(getwd())
