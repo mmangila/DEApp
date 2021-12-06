@@ -1,7 +1,9 @@
 # DEApp: an interactive web application of differential expression analysis
 
 ## What is DEApp
-This DE analysis interactive web application (App) is developed in R with Shiny, aiming to 1). conduct differential expression (DE) analysis with edgeR, limma-voom, and DESeq2, and 2). cross-validate the DE analysis results with these 3 different DE analysis methods based on your own provided input files.
+This DE analysis interactive web application (App) was developed in R with Shiny by Yan Li from the bioinformatics core at the Center for Research Informatics (CRI), biological science division (BSD), University of Chicago, with some modifications made by Leroy Miguel Mangila. Modifications mades were limited to the addition of the ability to download solely the up- or downregulated genes.
+
+The app aims to 1). conduct differential expression (DE) analysis with edgeR, limma-voom, and DESeq2, and 2). cross-validate the DE analysis results with these 3 different DE analysis methods based on your own provided input files.
 
 ## How To Use It
 To run this App after downloading this App from github to your local PC, please follow the steps as below:
