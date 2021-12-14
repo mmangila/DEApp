@@ -716,7 +716,7 @@ body <- dashboardBody(
                           column(4,
                                  textInput(inputId="edgerfc",
                                            label="Fold Change (FC)",
-                                           value="1.5")
+                                           value="1")
                           )
                         )
 
@@ -864,7 +864,7 @@ body <- dashboardBody(
                           column(4,
                                  textInput(inputId="voomfc",
                                            label="Fold Change (FC)",
-                                           value="1.5")
+                                           value="1")
                           )
                         )
 
@@ -998,7 +998,7 @@ body <- dashboardBody(
                           column(4,
                                  textInput(inputId="deseq2fc",
                                            label="Fold Change (FC)",
-                                           value="1.5")
+                                           value="1")
                           )
                         )
 
