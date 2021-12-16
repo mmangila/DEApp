@@ -591,12 +591,12 @@ body <- dashboardBody(
                           column(6,
                                  textInput(inputId="cpmVal",
                                            label="CPM value",
-                                           value="1")
+                                           value="0")
                           ),
                           column(6,
                                  textInput(inputId="gThreshold",
                                            label="at least in No. Samples",
-                                           value="2")
+                                           value="1")
                           )
                         ),
                         actionButton(inputId="rmlow", label="Submit"),

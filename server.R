@@ -165,6 +165,7 @@ shinyServer(function(input, output, session) {
   datareactive <- reactive ({
     org.counts <- dataObs$orgCount
     metadata <- dataObs$orgMeta
+    metadata <- metadata[match(colnames(org.counts),metadata[,1]),]
 
     #print(head(org.counts))
     #print(head(metadata))
