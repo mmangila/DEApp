@@ -255,7 +255,7 @@ shinyServer(function(input, output, session) {
     } else if( (! as.character(trim(input$edgercompGroup2)) %in% levels(Group)) | (! as.character(trim(input$edgercompGroup1)) %in% levels(Group)) ) {
       stop("Group level 1 or level 2 are not in the available group levels!")
     }
-    comp <- makeContrasts(contrasts=paste(as.character(trim(input$edgercompGroup2)), as.character(trim(input$edgercompGroup1)), sep="-"), levels=design )
+    comp <- makeContrasts(contrasts=paste(as.character(trim(input$edgercompGroup1)), as.character(trim(input$edgercompGroup2)), sep="-"), levels=design )
     test <- glmLRT(edgerglmFit(), contrast=comp)
     test
   })
@@ -331,7 +331,7 @@ shinyServer(function(input, output, session) {
       stop("Group level 1 or level 2 are not in the available group levels!")
     }
 
-    comp <- makeContrasts(contrasts=paste(as.character(trim(input$voomcompGroup2)), as.character(trim(input$voomcompGroup1)), sep="-"), levels=design )
+    comp <- makeContrasts(contrasts=paste(as.character(trim(input$voomcompGroup1)), as.character(trim(input$voomcompGroup2)), sep="-"), levels=design )
 
     contrast.fit <- contrasts.fit(voomRes(), contrasts=comp)
     contrast.fit <- eBayes(contrast.fit)
@@ -395,7 +395,7 @@ shinyServer(function(input, output, session) {
     } else if( (! as.character(trim(input$deseq2compGroup2)) %in% levels(Group)) | (! as.character(trim(input$deseq2compGroup1)) %in% levels(Group)) ) {
       stop("Group level 1 or level 2 are not in the available group levels!")
     }
-    res <- results(deseq2Res(), contrast=c("Group", as.character(trim(input$deseq2compGroup2)), as.character(trim(input$deseq2compGroup1))), format="DataFrame")
+    res <- results(deseq2Res(), contrast=c("Group", as.character(trim(input$deseq2compGroup1)), as.character(trim(input$deseq2compGroup2))), format="DataFrame")
     as.data.frame(res)
   })
 
@@ -435,7 +435,7 @@ shinyServer(function(input, output, session) {
       stop("Group level 1 or level 2 are not in the available group levels!")
     }
 
-    comp <- makeContrasts(contrasts=paste(as.character(trim(input$decompGroup2)), as.character(trim(input$decompGroup1)), sep="-"), levels=design )
+    comp <- makeContrasts(contrasts=paste(as.character(trim(input$decompGroup1)), as.character(trim(input$decompGroup2)), sep="-"), levels=design )
     compRes <- glmLRT(edgerglmFit(), contrast=comp)
     fcval <- as.numeric(input$decompfc)
     fdr <- as.numeric(input$decompfdr)
@@ -466,7 +466,7 @@ shinyServer(function(input, output, session) {
       stop("Group level 1 or level 2 are not in the available group levels!")
     }
 
-    comp <- makeContrasts(contrasts=paste(as.character(trim(input$decompGroup2)), as.character(trim(input$decompGroup1)), sep="-"), levels=design )
+    comp <- makeContrasts(contrasts=paste(as.character(trim(input$decompGroup1)), as.character(trim(input$decompGroup2)), sep="-"), levels=design )
     contrast.fit <- contrasts.fit(voomRes(), contrasts=comp)
     contrast.fit <- eBayes(contrast.fit)
 
@@ -495,7 +495,7 @@ shinyServer(function(input, output, session) {
       stop("Group level 1 or level 2 are not in the available group levels!")
     }
 
-    deseq2res  <- results(deseq2Res(), contrast=c("Group", as.character(trim(input$decompGroup2)), as.character(trim(input$decompGroup1)) ), format="DataFrame")
+    deseq2res  <- results(deseq2Res(), contrast=c("Group", as.character(trim(input$decompGroup1)), as.character(trim(input$decompGroup2)) ), format="DataFrame")
     deseq2fcval <- as.numeric(input$decompfc)
     deseq2fdr <- as.numeric(input$decompfdr)
     deseq2res$filter <- 0
